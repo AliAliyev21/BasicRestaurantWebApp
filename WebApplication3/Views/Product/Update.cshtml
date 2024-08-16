@@ -1,0 +1,41 @@
+﻿@model WebApplication3.Models.ProductUpdateViewModel
+
+@{
+    ViewData["Title"] = "Update Product";
+}
+
+<h2 class="mb-4">Update Product</h2>
+
+<form asp-action="Update" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Product Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Description</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price" class="control-label">Price</label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ImageFile" class="control-label">Update Image</label>
+        <input asp-for="ImageFile" type="file" class="form-control" />
+        <span asp-validation-for="ImageFile" class="text-danger"></span>
+        @if (!string.IsNullOrEmpty(Model.ExistingImage))
+        {
+            <div class="mt-2">
+                <img src="~/images/@Model.ExistingImage" alt="Current Image" style="width: 150px;" />
+            </div>
+        }
+    </div>
+    <div class="form-group">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Save Changes" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>

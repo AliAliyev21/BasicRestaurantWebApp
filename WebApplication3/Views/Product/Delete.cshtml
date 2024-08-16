@@ -1,0 +1,31 @@
+﻿@model WebApplication3.Entities.Product
+
+@{
+    ViewData["Title"] = "Delete Product";
+}
+
+<h2 class="mb-4">Delete Product</h2>
+
+<div>
+    <h3>Are you sure you want to delete this product?</h3>
+    <div>
+        <dl class="row">
+            <dt class="col-sm-3">Name</dt>
+            <dd class="col-sm-9">@Model.Name</dd>
+            <dt class="col-sm-3">Description</dt>
+            <dd class="col-sm-9">@Model.Description</dd>
+            <dt class="col-sm-3">Price</dt>
+            <dd class="col-sm-9">@Model.Price</dd>
+            <dt class="col-sm-3">Discount</dt>
+            <dd class="col-sm-9">@Model.Discount</dd>
+        </dl>
+    </div>
+
+    <form asp-action="DeleteConfirmed" method="post">
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
